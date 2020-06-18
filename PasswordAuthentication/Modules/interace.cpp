@@ -1,4 +1,5 @@
 #include "interface.h"
+
 std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> codec;
 
 HKEY hkey;
@@ -48,8 +49,10 @@ bool interfac::Proverka(int CrPr)
 			int k = 0;
 			for (int i = 0; i < Buf / 2; i++)
 			{
-				if (pas[i] != mean[k])
+				if (pas[i] != mean[k]) {
+					cout << "Нет.\n";
 					return false;
+				}
 				k = k + 2;
 			}
 			cout << "Да.\n";
@@ -160,7 +163,7 @@ string interfac::ValidPassword(string& text)
 		throw cipher_error(string("Пустая строка "));
 	for (auto & c : text)
 	{
-		if ((c >= 'z' && c <= 'A') || (c < '0' && c>'9'))
+		if ((c > 'z' || c < 'A') && (c < '0' || c>'9'))
 			throw cipher_error(string("Недопустимый текст - " + text));
 	}
 	if (text.size()<6)
@@ -174,7 +177,7 @@ string interfac::ValidLogin(string& text)
 		throw cipher_error(string("Пустая строка "));
 	for (auto & c : text)
 	{
-		if ((c >= 'z' && c <= 'A') || (c < '0' && c>'9'))
+		if ((c > 'z' || c < 'A') && (c < '0' || c>'9'))
 			throw cipher_error(string("Недопустимый текст - " + text));
 	}
 	if (text.size() < 6)
