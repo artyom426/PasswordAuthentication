@@ -30,10 +30,7 @@ int main(int VuborMenu = 0)
 				cout << Polsovatel.Create() << endl;
 				break;
 			case 2:
-				if (!Polsovatel.Proverka(1))
-					cout << "Нет.\n" << endl;
-				else
-					cout << endl;
+				Polsovatel.Proverka(1);
 				break;
 			case 3:
 				cout << Polsovatel.Delete() << endl;
